@@ -17,7 +17,6 @@ function createMap(trackData) {
 		div: '#map'
 	});
 	// Add window resize listener
-	// Watch window resize event
     $(window).resize(function() {
 	    clearTimeout(window.resizedFinished);
 	    window.resizedFinished = setTimeout(function(){
@@ -25,9 +24,23 @@ function createMap(trackData) {
 		    map.fitZoom();
 	    }, 250);
 	});
+	// Get timestamp range based on URL param
+	var dateParam = getParameterByName('date');
+	var startDateStamp;
+	var endDateStamp;
+	if (dateParam !== '') {
+		var date = new Date(dateParam);
+		date.setTime(date.getTime() + 10*60*1000); //AEST
+		startDateStamp = date.getTime() / 1000;
+		endDateStamp = date.getTime() / 1000 + 86400;
+	}
 	// Add markers for all track data
 	for (var i = 0; i < trackData.length; i++) {
 		var marker = trackData[i];
+		// Ignore data if outside set date range
+		if (dateParam !== '' && (marker.timestamp <= startDateStamp || marker.timestamp >= endDateStamp)) {
+			continue;
+		}
 		var markerDate = new Date(marker.timestamp); 
 		map.addMarker({
 			lat: marker.latitude,
@@ -39,4 +52,19 @@ function createMap(trackData) {
 		});
 	}
 	map.fitZoom();
+}
+
+// URL GET parameter function
+function getParameterByName(name) {
+    var url = window.location.href;
+    name = name.replace(/[\[\]]/g, "\\$&");
+    var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)");
+    results = regex.exec(url);
+    if (!results) {
+    	return null;
+    } 
+    if (!results[2]) {
+    	return '';
+    }
+    return decodeURIComponent(results[2].replace(/\+/g, " "));
 }
