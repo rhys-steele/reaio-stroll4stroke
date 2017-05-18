@@ -46,7 +46,7 @@ function createMap(trackData) {
 		if (dateParam !== '' && dateParam !== null && (marker.timestamp <= startDateStamp || marker.timestamp >= endDateStamp)) {
 			continue;
 		}
-		var markerDate = new Date(marker.timestamp); 
+		var markerDate = new Date(marker.timestamp * 1000); 
 		map.addMarker({
 			lat: marker.latitude,
 			lng: marker.longitude,
