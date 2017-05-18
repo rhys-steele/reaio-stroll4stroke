@@ -13,7 +13,9 @@ function getTrackData() {
 // Create map
 function createMap(trackData) {
 	var map = new GMaps({
-		div: '#map'
+		div: '#map',
+        lat: -12.043333,
+        lng: -77.028333
 	});
 	for (var i = 0; i < trackData.length; i++) {
 		var marker = trackData[i];
