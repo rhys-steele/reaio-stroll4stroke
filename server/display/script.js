@@ -28,7 +28,7 @@ function createMap(trackData) {
 	var dateParam = getParameterByName('date');
 	var startDateStamp;
 	var endDateStamp;
-	if (dateParam !== '') {
+	if (dateParam !== '' && dateParam !== null) {
 		var date = new Date(dateParam);
 		date.setTime(date.getTime() + 10*60*1000); //AEST
 		startDateStamp = date.getTime() / 1000;
@@ -38,7 +38,7 @@ function createMap(trackData) {
 	for (var i = 0; i < trackData.length; i++) {
 		var marker = trackData[i];
 		// Ignore data if outside set date range
-		if (dateParam !== '' && (marker.timestamp <= startDateStamp || marker.timestamp >= endDateStamp)) {
+		if (dateParam !== '' && dateParam !== null && (marker.timestamp <= startDateStamp || marker.timestamp >= endDateStamp)) {
 			continue;
 		}
 		var markerDate = new Date(marker.timestamp); 
