@@ -12,11 +12,22 @@ function getTrackData() {
 
 // Create map
 function createMap(trackData) {
+	// Initialize map
 	var map = new GMaps({
 		div: '#map',
         lat: -12.043333,
         lng: -77.028333
 	});
+	// Add window resize listener
+	// Watch window resize event
+    $(window).resize(function() {
+	    clearTimeout(window.resizedFinished);
+	    window.resizedFinished = setTimeout(function(){
+	        map.refresh();
+		    map.fitZoom();
+	    }, 250);
+	});
+	// Add markers for all track data
 	for (var i = 0; i < trackData.length; i++) {
 		var marker = trackData[i];
 		var markerDate = new Date(marker.timestamp); 
