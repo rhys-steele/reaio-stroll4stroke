@@ -52,7 +52,7 @@ function createMap(trackData) {
 			lng: marker.longitude,
 			title: markerDate.toString(),
 			infoWindow: {
-				content: '<img height="200px" src="https://roster.orangeskylaundry.com.au/app-usage-dashboard/img/logo.png">'
+				content: '<img height="200px" src="' + marker.photo_url + '">'
 			}
 		});
 		path.push([marker.latitude, marker.longitude]);
