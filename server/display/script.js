@@ -1,7 +1,18 @@
 // Start getting map data on document ready
 $(document).ready(function() {
     var trackData = getTrackData();
-    var map = new GMaps({
+});
+
+// Gets track data from file and returns array
+function getTrackData() {
+	$.getJSON("../trackData.json", function(data) {
+		createMap(data);
+	});
+}
+
+// Create map
+function createMap(trackdata) {
+	var map = new GMaps({
 		div: '#map'
 	});
 	for (var i = 0; i < trackData.length; i++) {
@@ -16,11 +27,4 @@ $(document).ready(function() {
 			}
 		});
 	}
-});
-
-// Gets track data from file and returns array
-function getTrackData() {
-	$.getJSON("../trackData.json", function(data) {
-		return data;
-	});
 }
