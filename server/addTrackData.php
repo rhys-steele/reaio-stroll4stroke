@@ -57,7 +57,7 @@
 		}
 		// Save new image on server
 		$new_filename = '../photos/track-photo-' . strtotime("now");
-		file_put_contents($new_filename, base64_decode($photo_data));
+		file_put_contents($new_filename, base64_decode(preg_replace('#^data:image/\w+;base64,#i', '', $data)));
 		// Return new filename
 		return $new_filename;
 	}
