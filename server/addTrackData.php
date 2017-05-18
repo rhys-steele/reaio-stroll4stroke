@@ -38,10 +38,10 @@
     	"photo_url" => $photo_url,
     	"timestamp" => strtotime("now")
     );
-    array_push($json_array, $new_marker);
+    array_push($json_array->markers, $new_marker);
 
     // Save markers to file
-    $json_string = json_encode($card_array);
+    $json_string = json_encode($json_array);
 	if ($json_string !== FALSE) {
 		file_put_contents('../researchRegister.json', $json_string);
 	} else {
@@ -58,10 +58,10 @@
 		    mkdir('./photos', 0664, true);
 		}
 		// Save new image on server
-		$new_filename = '../photos/track-photo-' . strtotime("now");
-		file_put_contents($new_filename, base64_decode(preg_replace('#^data:image/\w+;base64,#i', '', $data)));
+		$new_filename = './photos/track-photo-' . strtotime("now") . '.png';
+		file_put_contents($new_filename, base64_decode(preg_replace('#^data:image/\w+;base64,#i', '', $photo_data)));
 		// Return new filename
-		return $new_filename;
+		return '.' . $new_filename;
 	}
 
 	/**
