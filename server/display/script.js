@@ -39,6 +39,7 @@ function createMap(trackData) {
 		endDateStamp = date.getTime() / 1000 + 86400;
 	}
 	// Add markers for all track data
+	var path = [];
 	for (var i = 0; i < trackData.length; i++) {
 		var marker = trackData[i];
 		// Ignore data if outside set date range
@@ -54,8 +55,15 @@ function createMap(trackData) {
 				content: '<img height="200px" src="https://roster.orangeskylaundry.com.au/app-usage-dashboard/img/logo.png">'
 			}
 		});
+		path.push([marker.latitude, marker.longitude]);
 	}
 	if (map.markers.length !== 0) {
+		map.drawPolyline({
+			path: path,
+			strokeColor: '#131540',
+			strokeOpacity: 0.6,
+			strokeWeight: 6
+		});
 		map.fitZoom();
 	}
 }
