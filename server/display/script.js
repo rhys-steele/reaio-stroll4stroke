@@ -32,7 +32,7 @@ function createMap(trackData) {
 		map.addMarker({
 			lat: marker.latitude,
 			long: marker.longitude,
-			title: markerDate.format("dd/mm/yyyy hh:MM"),
+			title: markerDate.toString(),
 			infoWindow: {
 				content: '<img src="https://roster.orangeskylaundry.com.au/app-usage-dashboard/img/logo.png">'
 			}
