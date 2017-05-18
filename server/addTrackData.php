@@ -6,8 +6,10 @@
 	// INCLUDE FOR PHP VERSION COMPATIBILITY
     include './compat/http_response_code.php';
 
+
     // Get POST data
     $post_data = file_get_contents('php://input');
+    write_to_log('DEBUG', $post_data);
     $post_array = json_decode($post_data);
     if ($post_array === NULL) {
         http_response_code(400);
@@ -61,4 +63,27 @@
 		// Return new filename
 		return $new_filename;
 	}
+
+	/**
+	 * Function for writing to error log
+     */
+    function write_to_log($level, $content) {
+        $url = 'http://roster.orangeskylaundry.com.au/web-service/log/writeToLog.php';
+        $fields = array(
+                "logfile" => "access",
+                "level" => $level,
+                "content" => $content,
+                "source" => __FILE__,
+                "ip" => $_SERVER["REMOTE_ADDR"]
+            );
+
+        $ch = curl_init();
+
+        curl_setopt($ch, CURLOPT_URL, $url);
+        curl_setopt($ch, CURLOPT_POST, 1);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $fields);
+
+        curl_exec($ch);
+        curl_close($ch);
+    }
 ?>
