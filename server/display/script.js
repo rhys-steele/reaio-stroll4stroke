@@ -34,7 +34,7 @@ function createMap(trackData) {
 			lng: marker.longitude,
 			title: markerDate.toString(),
 			infoWindow: {
-				content: '<img src="https://roster.orangeskylaundry.com.au/app-usage-dashboard/img/logo.png">'
+				content: '<img height="200px" src="https://roster.orangeskylaundry.com.au/app-usage-dashboard/img/logo.png">'
 			}
 		});
 	}
