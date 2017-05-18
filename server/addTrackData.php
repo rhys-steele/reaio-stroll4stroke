@@ -43,7 +43,7 @@
     // Save markers to file
     $json_string = json_encode($json_array);
 	if ($json_string !== FALSE) {
-		file_put_contents('../researchRegister.json', $json_string);
+		file_put_contents('./trackData.json', $json_string);
 	} else {
 		http_response_code(500);
 		die();
