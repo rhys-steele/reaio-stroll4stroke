@@ -40,4 +40,5 @@ function createMap(trackData) {
 			}
 		});
 	}
+	map.fitZoom();
 }
