@@ -11,7 +11,7 @@ function getTrackData() {
 }
 
 // Create map
-function createMap(trackdata) {
+function createMap(trackData) {
 	var map = new GMaps({
 		div: '#map'
 	});
