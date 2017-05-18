@@ -14,7 +14,9 @@ function getTrackData() {
 function createMap(trackData) {
 	// Initialize map
 	var map = new GMaps({
-		div: '#map'
+		div: '#map',
+		lat: -37.813628,
+		lng: 144.963058
 	});
 	// Add window resize listener
     $(window).resize(function() {
