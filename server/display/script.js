@@ -20,8 +20,10 @@ function createMap(trackData) {
     $(window).resize(function() {
 	    clearTimeout(window.resizedFinished);
 	    window.resizedFinished = setTimeout(function(){
-	        map.refresh();
-		    map.fitZoom();
+		    if (map.markers.length !== 0) {
+		        map.refresh();
+				map.fitZoom();
+			}
 	    }, 250);
 	});
 	// Get timestamp range based on URL param
@@ -51,7 +53,9 @@ function createMap(trackData) {
 			}
 		});
 	}
-	map.fitZoom();
+	if (map.markers.length !== 0) {
+		map.fitZoom();
+	}
 }
 
 // URL GET parameter function
