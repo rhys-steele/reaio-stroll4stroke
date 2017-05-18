@@ -6,7 +6,7 @@ $(document).ready(function() {
 // Gets track data from file and returns array
 function getTrackData() {
 	$.getJSON("../trackData.json", function(data) {
-		createMap(data);
+		createMap(data.markers);
 	});
 }
 
@@ -14,9 +14,7 @@ function getTrackData() {
 function createMap(trackData) {
 	// Initialize map
 	var map = new GMaps({
-		div: '#map',
-        lat: -12.043333,
-        lng: -77.028333
+		div: '#map'
 	});
 	// Add window resize listener
 	// Watch window resize event

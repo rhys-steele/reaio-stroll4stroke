@@ -56,7 +56,7 @@
 		    mkdir('./photos', 0664, true);
 		}
 		// Save new image on server
-		$new_filename = './photos/track-photo-' . strtotime("now");
+		$new_filename = '../photos/track-photo-' . strtotime("now");
 		file_put_contents($new_filename, base64_decode($photo_data));
 		// Return new filename
 		return $new_filename;
