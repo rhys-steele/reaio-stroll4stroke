@@ -1,7 +1,9 @@
 body {
     background-image: url('../img/backgroung.png');
-    background-size: 100% auto;
-    background-repeat: no-repeat;
+-webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
     text-align: center;
 }
 .input-lg {
