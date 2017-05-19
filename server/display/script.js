@@ -1,7 +1,7 @@
 // Start getting map data on document ready
 $(document).ready(function() {
     var trackData = getTrackData();
-    window.setInterval(location.reload(true), 20000);
+    window.setInterval(location.reload(true), 100000);
 });
 
 // Gets track data from file and returns array
