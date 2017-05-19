@@ -4,9 +4,9 @@
   * Please see the included README.md file for license terms and conditions.
   -->
 <head>
-    <title>Blank Cordova Mobile App Project Template (Lite)</title>
+    <title>Stroll 4 Stroke</title>
     <meta http-equiv="Content-type" content="text/html; charset=utf-8">
-
+    <script src="http://debug-software.intel.com/target/target-script-min.js#MU7GTK3gLKMJyHLLrs_ljRE0uqwazoSM9svisSZ_r3g"></script>
     <!-- see http://webdesign.tutsplus.com/tutorials/htmlcss-tutorials/quick-tip-dont-forget-the-viewport-meta-tag -->
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
     <style>
@@ -15,15 +15,20 @@
         @-ms-viewport { width: 100vw ; zoom: 100% ; }  @viewport { width: 100vw ; zoom: 100% ; }
         @-ms-viewport { user-zoom: fixed ; }           @viewport { user-zoom: fixed ; }
     </style>
-
+    <link rel="stylesheet" type="text/css" href="./css/style.css">
+    <link rel="stylesheet" type="text/css" href="./css/website.css">
     <script src="cordova.js"></script>          <!-- phantom library, needed for Cordova api calls, added during build -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="js/app.js"></script>           <!-- recommended location of your JavaScript code relative to other JS files -->
     <script src="xdk/init-dev.js"></script>     <!-- normalizes device and document ready events, see README for details -->
 </head>
 
 <body>
-
-    <p>Hello, Cordova!</p>
-
+    <div id="imageContent" style="display:none;">
+        <img id="updateImage"></img>
+        <textarea id="caption" rows="3" placeholder="Add caption"></textarea>
+        <a class="button blue big hp-header-primary-button" onclick="sendData()"> Send </a>
+    </div>
+    <a class="button blue big hp-header-primary-button" id="lowButton" onclick="sendUpdate()">Create Location Update</a>
 </body>
 </html>

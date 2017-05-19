@@ -1,6 +1,9 @@
 // Start getting map data on document ready
 $(document).ready(function() {
     var trackData = getTrackData();
+    window.setInterval(function(){
+    	location.reload(true);
+    }, 20000);
 });
 
 // Gets track data from file and returns array
@@ -56,6 +59,9 @@ function createMap(trackData) {
 			}
 		});
 		path.push([marker.latitude, marker.longitude]);
+		if (i === trackData.length-1) {
+			console.log(map.markers);
+		}
 	}
 	if (map.markers.length !== 0) {
 		map.drawPolyline({
