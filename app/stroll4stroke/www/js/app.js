@@ -33,8 +33,8 @@ function geolocationSuccessCallback(position) {
         destinationType : Camera.DestinationType.DATA_URL, 
         encodingType: Camera.EncodingType.PNG,
         quality: 20,
-        correctOrientation: true,
-        allowEdit: true
+        correctOrientation: true
+//        allowEdit: true
     });
 }
 
@@ -50,7 +50,7 @@ function sendData() {
             photo: appData.imageData
         }),
         success: function(result){
-            alert("Location update data sent successfully");
+//            alert("Location update data sent successfully");
             window.setTimeout(window.location.reload(), 1000);
         },
         error: function(error) {
