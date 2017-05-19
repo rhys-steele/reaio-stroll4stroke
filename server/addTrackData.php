@@ -9,7 +9,6 @@
 
     // Get POST data
     $post_data = file_get_contents('php://input');
-    write_to_log('DEBUG', $post_data);
     $post_array = json_decode($post_data);
     if ($post_array === NULL) {
         http_response_code(400);
