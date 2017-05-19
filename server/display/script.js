@@ -3,7 +3,7 @@ $(document).ready(function() {
     var trackData = getTrackData();
     window.setInterval(function(){
     	location.reload(true);
-    }, 10000);
+    }, 20000);
 });
 
 // Gets track data from file and returns array
