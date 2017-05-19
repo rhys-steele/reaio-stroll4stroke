@@ -55,7 +55,7 @@ function createMap(trackData) {
 			lng: marker.longitude,
 			title: markerDate.toString(),
 			infoWindow: {
-				content: '<img height="200px" class="rotateimg90" src="' + marker.photo_url + '"><br><span>' + marker.text + '</span>'
+				content: '<div style="height:360px;"><img class="rotateimg90 fillheight" src="' + marker.photo_url + '"><br><span>' + marker.text + '</span></div>'
 			}
 		});
 		path.push([marker.latitude, marker.longitude]);
